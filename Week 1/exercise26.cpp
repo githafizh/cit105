@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-class Chef {
+class Chef { // superclass
     public:
         void makeChicken(){
             cout << "The chef makes chicken" << endl;
@@ -16,7 +16,7 @@ class Chef {
         }
 };
 
-class ItalianChef : public Chef {
+class ItalianChef : public Chef { // subclass (inheriting from superclass)
     public:
         void makePasta(){
             cout << "The chef makes pasta" << endl;
