@@ -4,6 +4,13 @@ using namespace std;
 char flag;
 int candiesQty, biscuitsQty, chipsQty, softdrinksQty;
 
+void clearCart(){
+    candiesQty = 0;
+    biscuitsQty = 0;
+    chipsQty = 0;
+    softdrinksQty = 0;
+}
+
 void showBills(){
     // Items price
     double candiesPr = 2500;
@@ -16,13 +23,19 @@ void showBills(){
     float chipsDc = 0.07;
     float softdrinksDc = 0.08;
 
-    double candiesTotalPr = 2500 * candiesQty;
-    double biscuitsTotalPr = 3000 * biscuitsQty;
-    double chipsTotalPr = 5000 * chipsQty;
-    double softdrinksTotalPr = 7000 * softdrinksQty;
+    double candiesTotalPr = 2500 * candiesQty * (1 - candiesDc);
+    double biscuitsTotalPr = 3000 * biscuitsQty * (1 - biscuitsDc);
+    double chipsTotalPr = 5000 * chipsQty * (1 - chipsDc);
+    double softdrinksTotalPr = 7000 * softdrinksQty * (1 - softdrinksDc);
 
-    cout << "\nTotal bills: " << endl;
-    cout << "Candies: " << candiesQty << " x " << candiesPr << " = " << "Rp " << candiesTotalPr;
+    double subTotal = candiesTotalPr + biscuitsTotalPr + chipsTotalPr + softdrinksTotalPr;
+
+    cout << "\nTotal bills with discount: " << endl;
+    cout << "Candies: " << candiesQty << " x " << candiesPr << " = " << "Rp " << candiesTotalPr << endl;
+    cout << "Biscuits: " << biscuitsQty << " x " << biscuitsPr << " = " << "Rp " << biscuitsTotalPr << endl;
+    cout << "Chips: " << chipsQty << " x " << chipsPr << " = " << "Rp " << chipsTotalPr << endl;
+    cout << "Softdrinks: " << softdrinksQty << " x " << softdrinksPr << " = " << "Rp " << softdrinksTotalPr << endl;
+    cout << "Subtotal: Rp " << subTotal << endl;  
     cout << "\n";
 }
 
@@ -50,7 +63,6 @@ void itemType(){
     switch (itemOpt)
     {
     case 1:
-        //cout << "Candies added to cart\n" << endl;
         cout << "Input how many candies: " << endl;
         cin >> candiesQty;
         cout << candiesQty << " candies added to cart\n" << endl;
@@ -59,14 +71,17 @@ void itemType(){
         cout << "Input how many biscuits: " << endl;
         cin >> biscuitsQty;
         cout << biscuitsQty << " biscuits added to cart\n" << endl;
+        break;
     case 3:
         cout << "Input how many chips: " << endl;
         cin >> chipsQty;
         cout << chipsQty << " chips added to cart\n" << endl;
+        break;
     case 4:
         cout << "Input how many softdrinks: " << endl;
         cin >> softdrinksQty;
         cout << softdrinksQty << " softdrinks added to cart\n" << endl;
+        break;
     case 5:
         cout << "Current items in cart: " << endl;
         cout << "Candies: " << candiesQty << endl;
@@ -92,10 +107,11 @@ void menu(){
 
     do 
     {
-        cout << "Please select the menu" << endl;
+        cout << "\nPlease select the menu" << endl;
         cout << "1. Add items" << endl;
         cout << "2. Show bills" << endl;
-        cout << "3. Exit" << endl;
+        cout << "3. Clear cart" << endl;
+        cout << "4. Exit" << endl;
         cin >> opt;
 
         switch (opt)
@@ -107,14 +123,17 @@ void menu(){
             showBills();
             break;
         case 3:
-            flag = '3';
+            clearCart();
+            break;
+        case 4:
+            flag = '4';
             break;
         default:
             cout << "Invalid option" << endl;
             break;
         }
         
-    } while(flag != '3');
+    } while(flag != '4');
 }
 
 int main(){
