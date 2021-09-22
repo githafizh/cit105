@@ -1,0 +1,40 @@
+Pseudocode for Library Program 
+
+//Register as a Member
+Write "Enter name:"
+Input Name
+Write "Enter ID Card Serial Number:"
+Input ID Card Number
+Write "Registration Successful"
+Write "Here is you Library Member Card Serial Number" + Library Card Serial Number
+
+//Searching the book title
+Write "Enter the book title:"
+Input Book Title
+Write "Here is the results found:" + Book Database
+
+//Borrow the book
+Write "Enter the book title:"
+Input Book Title
+Write "Here is the results found:" + Book Database
+Write "Do you want to borrow this book?"
+Input Choice
+If Choice == Yes Then
+    Write "Book succesfully borrowed, please come to the nearest librarian and show the booking number"
+    Write Booking Number
+Else 
+    Return to Searching the book title
+End If
+
+//Return the book
+Write "Enter library card serial number:"
+Input Library Card Serial Number
+Write "Enter your Booking Number:"
+Input Booking Number
+Write "Verification successful, please come to the nearest librarian to give the book and show the return number"
+Write Return Number
+
+//Warning of late return
+Write "The book return date has exceeded the maximum due date."
+Write "The penalty of late return is" + Late Fee
+Write "Please come to the nearest librarian to pay for the amount shown"
