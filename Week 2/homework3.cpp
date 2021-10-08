@@ -8,15 +8,17 @@ void loginMember(){
     string logUser, logPassword;
 
     while (flag != '6'){
-        cout << "Input the username: ";
+        cout << "\nInput your username: ";
         getline(cin, logUser);
-        cout << "\nInput the password: ";
+        cout << "\nInput your password: ";
         getline(cin, logPassword);
 
         if (logUser == regUser && logPassword == regPassword){
             cout << "Welcome!" << endl;
             flag = '6';
-        } 
+        } else {
+            cout << "Wrong credentials" << endl;
+        }
 
     }
 }
@@ -25,19 +27,23 @@ void regMember(){
 
     while (flag != '6')
     {
-        cout << "Input the username: ";
+        cout << "\nInput the username: ";
         getline(cin, regUser);
         cout << "\nInput the password: ";
         getline(cin, regPassword);
         cout << "\nConfirm the password: ";
         getline(cin, confirmPass);
-        
-        if (confirmPass == regPassword)
+
+        if (confirmPass != regPassword)
         {
-            flag = '6';
-        } else {
             cout << "\nIncorrect password, please input again: ";
             getline(cin, confirmPass);
+            
+        } else {
+            cout << "Register success!" << endl;
+            loginMember();
+            flag = '6';
+            
         }
     }
 }
