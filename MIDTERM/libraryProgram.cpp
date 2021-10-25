@@ -68,8 +68,9 @@ void Lib::searchBook(){
 }
 
 void Lib::borrowBook(){
-    cout << "This is borrow" << endl;
     int opt;
+    system("cls");
+    cout << "Borrow Menu" << endl;
     listBook();
 
     cout << "Enter the book's number that you want to borrow: ";
